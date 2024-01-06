@@ -10,31 +10,20 @@
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
-  </header>
   <nav>
     <a href="/">Home</a>
-    <!-- If the user is logged in, show a logout button -->
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <!-- Otherwise, show a link to login -->
+    <a href="/dashboard">Dashboard</a>
     <a href="/login">Login</a>
-    {{/if}}
+    <a href="/">Logout</a>
   </nav>
+  <section>
+    <section class="card-new header">The Tech Blog</h1>
+  </section>
   <main>
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
-    <div class="gallery">
+    <section class="blogs">
       {{{body}}}
-    </div>
+    </section>
   </main>
-  <!-- If the user is logged in, load the JS script for when they logout -->
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
 </body>
 
 </html>

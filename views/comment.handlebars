@@ -1,4 +1,4 @@
-<!-- TODO: Only if the user is logged in, render the painting content -->
+<!-- Only if the user is logged in, render the painting content -->
 {{#if loggedIn}}
   <section class="painting">
     <img src="/images/{{painting.filename}}" alt="{{painting.description}}">
@@ -9,6 +9,6 @@
     </div>
   </section>
   {{else}}
-    <!-- TODO: Otherwise, provide a link to login -->
+    <!-- Otherwise, provide a link to login -->
     <a href="/login">Please login to see the paintings</a>
   {{/if}}

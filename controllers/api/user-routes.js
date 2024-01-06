@@ -1,20 +1,20 @@
 const router = require('express').Router();
-const {User} = require('../../models');
+const {UserAuth} = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
-    const dbUserData = await User.create({
+    const dbUserData = await UserAuth.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
 
-    // TODO: Set up sessions with the 'loggedIn' variable
+    // Set up sessions with the 'loggedIn' variable
     req.session.save(() => {
-      // TODO: Set the 'loggedIn' session variable to 'true'
+      // Set the 'loggedIn' session variable to 'true'
       req.session.loggedIn = true;
-      req.session.user = dbUserData.get({plain: true});
+      req.session.userNm = dbUserData.get({plain: true});
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = await User.findOne({
+    const dbUserData = await UserAuth.findOne({
       where: {
         email: req.body.email,
       },
@@ -49,9 +49,9 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      // TODO: Once the user successfully logs in, set up sessions with the 'loggedIn' variable
+      // Once the user successfully logs in, set up sessions with the 'loggedIn' variable
       req.session.loggedIn = true;
-      req.session.user = dbUserData.get({plain: true});
+      req.session.userNm = dbUserData.get({plain: true});
       res
         .status(200)
         .json({user: dbUserData, message: 'You are now logged in!'});

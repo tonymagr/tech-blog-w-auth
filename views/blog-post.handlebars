@@ -2,7 +2,7 @@
   <h3 class="gallery-name">{{gallery.name}}</h3>
   <h4>Opening Hour: {{format_time gallery.starting_date}}</h4>
   <h4>Closing Hour: {{format_time gallery.ending_date}}</h4>
-  <!-- TODO: Only if the user is logged in, render the gallery's paintings -->
+  <!-- Only if the user is logged in, render the gallery's paintings -->
   {{#if loggedIn}}
     <section class="flex-row justify-center">
       {{#each gallery.paintings as |painting|}}
@@ -10,7 +10,7 @@
       {{/each}}
   </section>
   {{else}}
-  <!-- TODO: Otherwise, provide a link to login -->
+  <!-- Otherwise, provide a link to login -->
     <a href="/login">Please login to see the paintings</a>
   {{/if}}
 </section>
@@ -19,12 +19,12 @@
   <h3 class="gallery-name">{{gallery.name}}</h3>
   <h4>Opening Hour: {{format_time gallery.starting_date}}</h4>
   <h4>Closing Hour: {{format_time gallery.ending_date}}</h4>
-  <!-- TODO: Only if the user is logged in, render the gallery's paintings -->
+  <!-- Only if the user is logged in, render the gallery's paintings -->
   <section class="flex-row justify-center">
     {{#each gallery.paintings as |painting|}}
     {{> painting-details}}
     {{/each}}
   </section>
 
-  <!-- TODO: Otherwise, provide a link to login -->
+  <!-- Otherwise, provide a link to login -->
 </section> --}}

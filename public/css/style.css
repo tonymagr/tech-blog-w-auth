@@ -138,6 +138,15 @@ img {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
+.card-new header {
+  /* color: var(--light); */
+  font-weight: bold;
+  margin: 0;
+  /* background-color: var(--tertiary); */
+  padding: 0.625rem;
+  border-radius: 5px;
+}
+
 .card-body {
   font-size: 1.4rem;
   text-align: center;

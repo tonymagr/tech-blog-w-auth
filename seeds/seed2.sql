@@ -1,0 +1,23 @@
+use blog_db;
+
+DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `blogpost`;
+DROP TABLE IF EXISTS `user`;
+SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'user' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='museum_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'blogpost' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='museum_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'comment' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='museum_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `blogpost`;
+DROP TABLE IF EXISTS `comment`;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (`id` INTEGER NOT NULL auto_increment , `username` VARCHAR(255) NOT NULL, `password` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+SHOW INDEX FROM `user`;
+DROP TABLE IF EXISTS `blogpost`;
+CREATE TABLE IF NOT EXISTS `blogpost` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255) NOT NULL, `contents` VARCHAR(255) NOT NULL, `user_name` VARCHAR(255) NOT NULL, `post_date` DATETIME NOT NULL, `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+SHOW INDEX FROM `blogpost`;
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (`id` INTEGER NOT NULL auto_increment , `comment_text` VARCHAR(255) NOT NULL, `user_name` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`blogpost_id`) REFERENCES `blogpost` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+SHOW INDEX FROM `comment`;
+INSERT INTO `blogpost` (`id`,`title`,`contents`,`user_name`,`post_date`,`created_at`,`updated_at`) VALUES (NULL,'HTML post','HTML defines front-end content.','Michael Jordan','2023-10-01 14:00:00','2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'CSS post','CSS styles front-end content.','Scottie Pippen','2023-11-01 21:00:00','2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'Javascript post','Javascript is the underlying web development language for front-end and back-end.','Horace Grant','2023-10-31 14:00:00','2024-01-06 03:53:53','2024-01-06 03:53:53');
+INSERT INTO `comment` (`id`,`comment_text`,`user_name`,`comment_date`,`blogpost_id`,`created_at`,`updated_at`) VALUES (NULL,'Javascript rules','Geek 1','2023-12-01 15:00:00',3,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'HTML rules','Geek 2','2023-12-02 15:00:00',1,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'CSS rules','Geek 3','2023-12-03 15:00:00',2,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'I wanna code','Geek 4','2023-12-04 15:00:00',1,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'I really wanna code','Geek 5','2023-12-05 
+15:00:00',2,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'I really really wanna code','Geek 6','2023-12-06 15:00:00',3,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'I also would like to code','Geek 7','2023-12-07 15:00:00',1,'2024-01-06 03:53:53','2024-01-06 03:53:53'),(NULL,'I will just watch you code','Geek 8','2023-12-08 15:00:00',3,'2024-01-06 03:53:53','2024-01-06 03:53:53');
