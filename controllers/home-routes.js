@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one blog post
+// Render blog post with its comments
 router.get('/blogpost/:id', async (req, res) => {
   try {
     const dbBlogData = await Blogpost.findByPk(req.params.id,
@@ -39,6 +39,7 @@ router.get('/blogpost/:id', async (req, res) => {
       });
 
     const blogPost = dbBlogData.get({plain: true});
+    console.log('dbBlogData',dbBlogData);
     // Send over the 'loggedIn' session variable to the 'blogpost' template
     res.render('blog-post', {
       blogPost,
@@ -50,7 +51,22 @@ router.get('/blogpost/:id', async (req, res) => {
   }
 });
 
-// // GET one painting
+
+
+// ------> Next <---------
+// ------> Next <---------
+// ------> Next <---------
+// // Render page to enter new blog post comment. "id" is the blogpost id
+// router.get('/blogpostcomment/:id', async (req, res) => {
+//   try {
+// ------> Next <---------
+// ------> Next <---------
+// ------> Next <---------
+
+
+
+
+// Render 'comment' which is a blog post and its comments
 // router.get('/painting/:id', async (req, res) => {
 //   try {
 //     const dbPaintingData = await Painting.findByPk(req.params.id);

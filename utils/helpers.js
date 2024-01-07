@@ -7,4 +7,8 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  // Helper "incr" to increment @index by 1 for each record displayed. Was starting at 0 - prefer start at 1.
+  incr: (index) => {
+    return index + 1;
+  },
 };
