@@ -2,11 +2,10 @@ const router = require('express').Router();
 const {UserAuth} = require('../../models');
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const dbUserData = await UserAuth.create({
-      username: req.body.username,
-      email: req.body.email,
+      username: req.body.user,
       password: req.body.password,
     });
 
@@ -15,6 +14,7 @@ router.post('/', async (req, res) => {
       // Set the 'loggedIn' session variable to 'true'
       req.session.loggedIn = true;
       req.session.userNm = dbUserData.get({plain: true});
+      console.log('userNm', req.session.userNm);
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -28,23 +28,23 @@ router.post('/login', async (req, res) => {
   try {
     const dbUserData = await UserAuth.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.user,
       },
     });
-
+    console.log('dbUserData', dbUserData)
     if (!dbUserData) {
       res
         .status(400)
-        .json({message: 'Incorrect email or password. Please try again!'});
+        .json({message: 'Incorrect username or password. Please try again!'});
       return;
     }
-
+    // Await has no effect on the type of this expression.
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
         .status(400)
-        .json({message: 'Incorrect email or password. Please try again!'});
+        .json({message: 'Incorrect username or password. Please try again!'});
       return;
     }
 
@@ -52,6 +52,7 @@ router.post('/login', async (req, res) => {
       // Once the user successfully logs in, set up sessions with the 'loggedIn' variable
       req.session.loggedIn = true;
       req.session.userNm = dbUserData.get({plain: true});
+      console.log('userNm', req.session.userNm);
       res
         .status(200)
         .json({user: dbUserData, message: 'You are now logged in!'});

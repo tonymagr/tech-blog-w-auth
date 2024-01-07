@@ -63,15 +63,26 @@ router.get('/blogpost/:id', async (req, res) => {
 //   }
 // });
 
-// // Login route
-// router.get('/login', (req, res) => {
-//   // If the user is already logged in, redirect to the homepage
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
-//   // Otherwise, render the 'login' template
-//   res.render('login');
-// });
+// Login route
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  // Otherwise, render the 'login' template
+  res.render('login');
+});
+
+// Signup route
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  // Otherwise, render the 'login' template
+  res.render('signup');
+});
 
 module.exports = router;

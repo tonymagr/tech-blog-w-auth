@@ -14,16 +14,18 @@
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
     <a href="/login">Login</a>
-    <a href="/">Logout</a>
+    <a id="logout-link" href="/">Logout</a>
+    {{!-- <a id="logout-link" href="/" target="_blank">Logout</a> --}}
   </nav>
   <section>
-    <section class="card-new header">The Tech Blog</h1>
+    <h1 class="card-new header">The Tech Blog</h1>
   </section>
   <main>
-    <section class="blogs">
+    <section class="blog">
       {{{body}}}
     </section>
   </main>
+  <script src="/js/logout.js"></script>
 </body>
 
 </html>
