@@ -24,9 +24,9 @@ a {
   text-decoration: none;
 }
 
-a:visited {
+/* a:visited {
   color: inherit;
-}
+} */
 
 header {
   padding: 40px;
@@ -112,6 +112,24 @@ nav a:hover {
   margin-left: 16px;
 }
 
+.btn-wide {
+  width: 95%;
+  margin: 0.625rem auto;
+}
+
+.height-fixed {
+  min-height: 80px;
+  line-height: 16px;
+}
+
+#comm-username {
+  display: none;
+}
+
+#comm-blogid {
+  display: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -149,6 +167,15 @@ img {
   color: var(--dark);
 }
 
+.inner-card-wide {
+  flex: 0 1 700px;
+  /* margin: 20px; */
+  /* border: 7px double var(--dark);
+  border-radius: 10px;
+  background-color: var(--light); */
+  /* color: var(--dark); */
+}
+
 .card-wide header {
   font-weight: bold;
   margin: 0;
@@ -158,6 +185,18 @@ img {
 
 .font-normal {
   font-weight: normal;
+}
+
+.margin-text {
+  margin: 0 8px;
+}
+
+.margin-text-wide {
+  margin: 0 15px;
+}
+
+.font-size-normal {
+  font-size: 16px;
 }
 
 .login-card {

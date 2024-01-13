@@ -39,7 +39,6 @@ router.get('/blogpost/:id', async (req, res) => {
       });
 
     const blogPost = dbBlogData.get({plain: true});
-    console.log('dbBlogData',dbBlogData);
     // Send over the 'loggedIn' session variable to the 'blogpost' template
     res.render('blog-post', {
       blogPost,
@@ -51,20 +50,40 @@ router.get('/blogpost/:id', async (req, res) => {
   }
 });
 
+// Render page to enter new blog post comment. "id" is the blogpost id
+router.get('/blogpostcomment/:id', async (req, res) => {
+  try {
+    const dbBlogData = await Blogpost.findByPk(req.params.id);
 
+    const blogPost = dbBlogData.get({plain: true});
+    console.log('req.session.user', req.session.user);
+    // Send over the 'loggedIn' session variable to the 'blogpost' template
+    res.render('blog-post-comment', {
+      blogPost,
+      loggedIn: req.session.loggedIn,
+      activeUser: req.session.user,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-// ------> Next <---------
-// ------> Next <---------
-// ------> Next <---------
-// // Render page to enter new blog post comment. "id" is the blogpost id
-// router.get('/blogpostcomment/:id', async (req, res) => {
-//   try {
-// ------> Next <---------
-// ------> Next <---------
-// ------> Next <---------
-
-
-
+// CREATE new comment
+router.post('/blogpostcomment/:id', async (req, res) => {
+  try {
+    const commentData = await Comment.create({
+      comment_text: req.body.comment,
+      user_name: req.body.userName,
+      comment_date: req.body.commentDate,
+      blogpost_id: req.body.blogId,
+    });
+    res.status(200).json(commentData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Render 'comment' which is a blog post and its comments
 // router.get('/painting/:id', async (req, res) => {

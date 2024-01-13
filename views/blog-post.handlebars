@@ -9,31 +9,13 @@
 </section>
 
 <section class="card-wide">
-  <p>
-    <span class="color-light">..</span>
-    <span>
-      <a class="color-link" href="/blogpostcomment/{{id}}">Enter new comment</a>
-    </span>
-  </p>
+  {{#if loggedIn}}
+    <a class="color-link margin-text-wide" href="/blogpostcomment/{{blogPost.id}}">Enter new comment</a>
+  {{else}}
+    <p class="margin-text-wide font-size-normal">Blog Post Comments</p>
+  {{/if}}
+
   {{#each blogPost.comments as |comment|}}
     {{> comment-details}}
   {{/each}}
 </section>
-
-
-
-{{!-- <section class="container"> --}}
-  {{!-- <h3 class="blog-name">{{blogPost.name}}</h3> --}}
-  {{!-- <!-- Only if the user is logged in, render the blogPost's paintings --> --}}
-  {{!-- {{#if loggedIn}} --}}
-    {{!-- <section class="flex-row justify-center"> --}}
-      {{!-- {{#each blogPost.comments as |comment|}} --}}
-        {{!-- {{> comment-details}} --}}
-        {{!-- <section>This is a comment</section> --}}
-      {{!-- {{/each}} --}}
-  {{!-- </section> --}}
-  {{!-- {{else}} --}}
-  {{!-- <!-- Otherwise, provide a link to login --> --}}
-    {{!-- <a href="/login">Please login to see the comments</a> --}}
-  {{!-- {{/if}} --}}
-{{!-- </section> --}}
