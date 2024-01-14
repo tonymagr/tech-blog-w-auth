@@ -4,31 +4,28 @@
 
 {{#if loggedIn}}
   <section class="card-wide">
-    <header class="space-between">
-      <span>{{blogPost.title}}</span>
-      <span>Posted by {{blogPost.user_name}} on {{ format_date blogPost.post_date }}</span>
-    </header>
-    <section>
-      {{blogPost.contents}}
-    </section>
-  </section>
-
-  <section class="card-wide">
-    <header class="height-fixed"></header>
+    <header>Create New Post</header>
     <section class="inner-card-wide">
-      {{!-- <h2>Comment</h2> --}}
       <form class="form" id="comment-form">
+        <div class="form-group font-size-normal"> 
+
+
+          {{!-- ==>   Resume Here   <== --}}
+
+          
+          <label class="margin-text" for="blog-comment">Title</label>
+          <input class="form-input" type="text" id="blog-comment" name="blog-comment" rows="8"></input>
+        </div>
         <div class="form-group font-size-normal">
-          <label class="margin-text" for="blog-comment">Comment</label>
+          <label class="margin-text" for="blog-comment">Content</label>
           <textarea class="form-input" type="text" id="blog-comment" name="blog-comment" rows="8"></textarea>
         </div>
-        {{!-- Hidden section - used for storing passed data - Has to be part of the form --}}
         <div class="form-group">
           <button class="btn btn-primary btn-wide" type="submit">Submit</button>
         </div>
+        {{!-- Hidden section - used for storing passed data - Has to be part of the form --}}
         <div>
           <p class="form-group" id="comm-username">{{activeUser}}</p>
-          <p class="form-group" id="comm-blogid">{{blogPost.id}}</p>
         </div>
       </form>
     </section>

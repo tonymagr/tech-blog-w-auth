@@ -1,0 +1,13 @@
+<section>
+    <h1 class="color-light">Your Dashboard</h1>
+</section>
+
+{{#if loggedIn}}
+    <a class="color-link margin-text-wide" href="/newblogpost">Enter new blog post</a>
+{{else}}
+    <p class="margin-text-wide font-size-normal">Your Blog Posts</p>
+{{/if}}
+
+{{#each blogPosts as |blogPost|}}
+    {{> dashboard-blog-post-details}}
+{{/each}}

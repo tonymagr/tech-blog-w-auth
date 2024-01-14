@@ -20,6 +20,50 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET all blog posts for Your Dashboard, only posts for logged in user
+router.get('/dashboardblogpost', async (req, res) => {
+  // If the user is logged in, find own blogposts and render on page
+  if (req.session.loggedIn) {
+    try {
+      const dbBlogData = await Blogpost.findAll({
+        where: {
+          user_name: req.session.user
+        }
+      });
+
+      const blogPosts = dbBlogData.map((blogPost) =>
+        blogPost.get({plain: true})
+      );
+      // Send over the 'loggedIn' session variable to the 'dashboard' template
+      res.render('dashboard-blog-post', {
+        blogPosts,
+        loggedIn: req.session.loggedIn,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  } else {
+    // Else user is not logged in. Redirect to home page.
+    res.redirect('/');
+    return;
+  }
+});
+
+// Render page to enter new blog post.
+router.get('/newblogpost', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.render('new-blog-post', {
+      loggedIn: req.session.loggedIn,
+      activeUser: req.session.user,
+    });
+  } else {
+    // Else user is not logged in. Redirect to home page.
+    res.redirect('/');
+    return;
+  }
+});
+
 // Render blog post with its comments
 router.get('/blogpost/:id', async (req, res) => {
   try {
@@ -84,19 +128,6 @@ router.post('/blogpostcomment/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// Render 'comment' which is a blog post and its comments
-// router.get('/painting/:id', async (req, res) => {
-//   try {
-//     const dbPaintingData = await Painting.findByPk(req.params.id);
-//     const painting = dbPaintingData.get({plain: true});
-//     // Send over the 'loggedIn' session variable to the 'homepage' template
-//     res.render('painting', {painting, loggedIn: req.session.loggedIn,});
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 // Login route
 router.get('/login', (req, res) => {

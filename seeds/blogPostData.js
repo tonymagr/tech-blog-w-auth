@@ -19,6 +19,12 @@ const blogPostData = [
     user_name: 'Horace Grant',
     post_date: 'October 31, 2023 07:00:00',
   },
+  {
+    title: 'Own post',
+    contents: 'One of my own posts',
+    user_name: 'tony',
+    post_date: 'January 13, 2024 20:30:00',
+  },
 ];
 
 const seedBlogPost = () => Blogpost.bulkCreate(blogPostData);

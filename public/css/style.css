@@ -70,7 +70,7 @@ nav a:hover {
 .blog {
   flex: 4;
   background-color: #fff;
-  padding: 50px;
+  /* padding: 25px; */
   /* display: flex; */
   flex-flow: row wrap;
   justify-content: center;
@@ -79,6 +79,7 @@ nav a:hover {
 
 .color-light {
   color: var(--light);
+  background-color: var(--quatrinary);
 }
 
 .color-link {
@@ -118,8 +119,7 @@ nav a:hover {
 }
 
 .height-fixed {
-  min-height: 80px;
-  line-height: 16px;
+  min-height: 40px;
 }
 
 #comm-username {
