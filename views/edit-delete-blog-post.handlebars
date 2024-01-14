@@ -4,28 +4,28 @@
 
 {{#if loggedIn}}
   <section class="card-wide">
-    <header>Create New Post</header>
+    <header>Edit or Delete Post</header>
     <section class="inner-card-wide">
-      <form class="form" id="new-blog-form">
+      <form class="form" id="edit-blog-form">
         <div class="form-group font-size-normal">
           <label class="margin-text-extra-wide" for="blog-title">Title</label>
           <input class="form-input" type="text" id="blog-title" name="blog-title"></input>
           <label class="margin-text-extra-wide" for="blog-post">Content</label>
           <textarea class="form-input" type="text" id="blog-post" name="blog-post" rows="6"></textarea>
-        {{!-- </div>
-        <div class="form-group"> --}}
-          <button class="btn btn-primary btn-wide" type="submit">Create</button>
+          <button class="btn btn-primary btn-wide" value="update" type="submit">Update Post</button>
+          <button class="btn btn-primary btn-wide" value="delete" type="submit">Delete</button>
         </div>
         {{!-- Hidden section - used for storing passed data - Has to be part of the form --}}
         <div class="hidden-passed-data">
           <p class="form-group">{{activeUser}}</p>
+          <p class="form-group">{{blogPost.id}}</p>
         </div>
       </form>
     </section>
   </section>
 {{else}}
   <!-- Otherwise, provide a link to login -->
-  <a class="color-link margin-text-wide" href="/login">Click here to login to enter blog post.</a>
+  <a class="color-link margin-text-wide" href="/login">Click here to login to edit or delete blog post.</a>
 {{/if}}
 
 {{!-- This sources dashboard-blog-post.js Javascript folder. Relative to express.static 

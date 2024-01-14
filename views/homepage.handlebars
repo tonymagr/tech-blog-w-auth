@@ -2,6 +2,16 @@
     <h1 class="color-light">The Tech Blog</h1>
 </section>
 
+{{#if loggedIn}}
+    <p class="margin-text-extra-wide font-size-normal">
+        You are logged in. Comment on blog posts or work in your Dashboard.
+    </p>
+{{else}}
+    <p class="margin-text-extra-wide font-size-normal">
+        Click on blog post to view comments. Login to enter comments or work in your Dashboard.
+    </p>
+{{/if}}
+
 {{#each blogPosts as |blogPost|}}
     {{> blog-post-details}}
 {{/each}}

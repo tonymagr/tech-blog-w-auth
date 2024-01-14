@@ -50,7 +50,7 @@ router.get('/dashboardblogpost', async (req, res) => {
   }
 });
 
-// Render page to enter new blog post.
+// Render page to enter new blog post (Dashboard view)
 router.get('/newblogpost', async (req, res) => {
   if (req.session.loggedIn) {
     res.render('new-blog-post', {
@@ -61,6 +61,40 @@ router.get('/newblogpost', async (req, res) => {
     // Else user is not logged in. Redirect to home page.
     res.redirect('/');
     return;
+  }
+});
+
+// CREATE new blog post (Dashboard view)
+router.post('/newblogpost', async (req, res) => {
+  try {
+    const postData = await Blogpost.create({
+      title: req.body.title,
+      contents: req.body.contents,
+      user_name: req.body.userName,
+      post_date: req.body.postDate,
+    });
+    res.status(200).json(postData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Render page to update or delete blog post. "id" is blogpost ID (Dashboard view)
+router.get('/editdeleteblogpost/:id', async (req, res) => {
+  try {
+    const dbBlogData = await Blogpost.findByPk(req.params.id);
+
+    const blogPost = dbBlogData.get({plain: true});
+    // Send over the 'loggedIn' and 'activeUser' session variables to the template
+    res.render('edit-delete-blog-post', {
+      blogPost,
+      loggedIn: req.session.loggedIn,
+      activeUser: req.session.user,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 

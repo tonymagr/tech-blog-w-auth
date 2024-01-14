@@ -30,7 +30,6 @@ a {
 
 header {
   padding: 40px;
-  text-align: center;
   background: var(--primary);
   color: var(--light);
 }
@@ -122,11 +121,7 @@ nav a:hover {
   min-height: 40px;
 }
 
-#comm-username {
-  display: none;
-}
-
-#comm-blogid {
+.hidden-passed-data {
   display: none;
 }
 
@@ -193,6 +188,10 @@ img {
 
 .margin-text-wide {
   margin: 0 15px;
+}
+
+.margin-text-extra-wide {
+  margin: 0 25px;
 }
 
 .font-size-normal {

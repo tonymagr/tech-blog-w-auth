@@ -19,23 +19,23 @@
       {{!-- <h2>Comment</h2> --}}
       <form class="form" id="comment-form">
         <div class="form-group font-size-normal">
-          <label class="margin-text" for="blog-comment">Comment</label>
-          <textarea class="form-input" type="text" id="blog-comment" name="blog-comment" rows="8"></textarea>
+          <label class="margin-text-extra-wide" for="blog-comment">Comment</label>
+          <textarea class="form-input" type="text" id="blog-comment" name="blog-comment" rows="6"></textarea>
         </div>
         {{!-- Hidden section - used for storing passed data - Has to be part of the form --}}
         <div class="form-group">
           <button class="btn btn-primary btn-wide" type="submit">Submit</button>
         </div>
-        <div>
-          <p class="form-group" id="comm-username">{{activeUser}}</p>
-          <p class="form-group" id="comm-blogid">{{blogPost.id}}</p>
+        <div class="hidden-passed-data">
+          <p class="form-group">{{activeUser}}</p>
+          <p class="form-group">{{blogPost.id}}</p>
         </div>
       </form>
     </section>
   </section>
 {{else}}
   <!-- Otherwise, provide a link to login -->
-  <a class="color-link margin-text-wide" href="/login">Click here to login to enter or manage comments.</a>
+  <a class="color-link margin-text-wide" href="/login">Click here to login to enter comment.</a>
 {{/if}}
 
 {{!-- This sources login.js Javascript folder ./js relative to express.static 
