@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET all blog posts for Your Dashboard, only posts for logged in user
+// GET all blog posts for Your Dashboard, only posts for logged in user (Dashboard view)
 router.get('/dashboardblogpost', async (req, res) => {
   // If the user is logged in, find own blogposts and render on page
   if (req.session.loggedIn) {
@@ -96,6 +96,40 @@ router.get('/editdeleteblogpost/:id', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+// Update blog post (Dashboard view)
+router.put('/editdeleteblogpost/:id', async (req, res) => {
+  try {
+    const blogPostUpd = await Blogpost.update(
+    {
+      title: req.body.title,
+      contents: req.body.contents,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(blogPostUpd);
+  } catch (err) {
+      res.status(500).json(err);
+    };
+});
+
+// Update blog post (Dashboard view)
+router.delete('/editdeleteblogpost/:id', async (req, res) => {
+  try {
+    const blogPostDel = await Blogpost.destroy(
+    {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(blogPostDel);
+  } catch (err) {
+      res.status(500).json(err);
+    };
 });
 
 // Render blog post with its comments

@@ -9,16 +9,16 @@
       <form class="form" id="edit-blog-form">
         <div class="form-group font-size-normal">
           <label class="margin-text-extra-wide" for="blog-title">Title</label>
-          <input class="form-input" type="text" id="blog-title" name="blog-title"></input>
+          <input class="form-input" type="text" id="blog-title" name="blog-title" value="{{blogPost.title}}"></input>
           <label class="margin-text-extra-wide" for="blog-post">Content</label>
-          <textarea class="form-input" type="text" id="blog-post" name="blog-post" rows="6"></textarea>
+          <textarea class="form-input" type="text" id="blog-post" name="blog-post" rows="6">{{blogPost.contents}}</textarea>
           <button class="btn btn-primary btn-wide" value="update" type="submit">Update Post</button>
           <button class="btn btn-primary btn-wide" value="delete" type="submit">Delete</button>
         </div>
         {{!-- Hidden section - used for storing passed data - Has to be part of the form --}}
         <div class="hidden-passed-data">
-          <p class="form-group">{{activeUser}}</p>
-          <p class="form-group">{{blogPost.id}}</p>
+          <p id="post-usename" class="form-group">{{activeUser}}</p>
+          <p id="post-blogid" class="form-group">{{blogPost.id}}</p>
         </div>
       </form>
     </section>
@@ -30,4 +30,4 @@
 
 {{!-- This sources dashboard-blog-post.js Javascript folder. Relative to express.static 
 declaration for 'public'. --}}
-<script src="/js/dashboard-blog-post.js"></script>
+<script src="/js/update-blog-post.js"></script>
