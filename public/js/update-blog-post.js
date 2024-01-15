@@ -3,7 +3,7 @@ const updateBlogPostHandler = async (event) => {
   const contents = document.querySelector('#blog-post').value;
   const id = document.querySelector('#post-blogid').innerHTML;
 
-  const response = await fetch(`/editdeleteblogpost/${id}`, {
+  const response = await fetch(`/api/dashboard/editdeleteblogpost/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
       title,
@@ -15,7 +15,7 @@ const updateBlogPostHandler = async (event) => {
   });
   if (response.ok) {
     alert('Blog post updated.');
-    document.location.replace('/dashboardblogpost');
+    document.location.replace('/api/dashboard/blogpost');
   } else {
     alert('Failed to update blog post.');
   }
@@ -24,12 +24,12 @@ const updateBlogPostHandler = async (event) => {
 const deleteBlogPostHandler = async (event) => {
   const id = document.querySelector('#post-blogid').innerHTML;
 
-  const response = await fetch(`/editdeleteblogpost/${id}`, {
+  const response = await fetch(`/api/dashboard/editdeleteblogpost/${id}`, {
     method: 'DELETE',
   });
   if (response.ok) {
     alert('Blog post deleted.');
-    document.location.replace('/dashboardblogpost');
+    document.location.replace('/api/dashboard/blogpost');
   } else {
     alert('Failed to delete blog post.');
   }

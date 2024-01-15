@@ -7,14 +7,14 @@ const newBlogPostHandler = async (event) => {
   const postDate = new Date();
 
   if (title && contents && userName) {
-    const response = await fetch('/newblogpost', {
+    const response = await fetch('/api/dashboard/newblogpost', {
       method: 'POST',
       body: JSON.stringify({ title, contents, userName, postDate}),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
       alert('Blog post created.');
-      document.location.replace('/dashboardblogpost');
+      document.location.replace('/api/dashboard/blogpost');
     } else {
       alert('Failed to create blog post.');
     }

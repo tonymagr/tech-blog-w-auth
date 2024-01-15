@@ -7,7 +7,7 @@ const newCommentHandler = async (event) => {
   const commentDate = new Date();
 
   if (comment && userName && blogId) {
-    const response = await fetch(`/blogpostcomment/${blogId}`, {
+    const response = await fetch(`/api/blogs/comment/${blogId}`, {
       method: 'POST',
       body: JSON.stringify({ comment, userName, commentDate, blogId}),
       headers: { 'Content-Type': 'application/json' },

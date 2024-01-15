@@ -14,7 +14,7 @@
 
 <section class="card-wide height-fixed">
   {{#if loggedIn}}
-    <a class="color-link margin-text-wide" href="/blogpostcomment/{{blogPost.id}}">Enter new comment</a>
+    <a class="color-link margin-text-wide" href="/api/blogs/comment/{{blogPost.id}}">Enter new comment</a>
   {{else}}
     <p class="margin-text-wide font-size-normal">Blog Post Comments</p>
   {{/if}}
