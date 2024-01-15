@@ -186,12 +186,12 @@ select {
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
-button,
+/* button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
-}
+} */
 
 /**
  * Remove the inner border and padding in Firefox.
@@ -280,12 +280,12 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
-  -webkit-appearance: textfield;
+/* [type='search'] {
+  -webkit-appearance: textfield; */
   /* 1 */
-  outline-offset: -2px;
+  /* outline-offset: -2px; */
   /* 2 */
-}
+/* } */
 
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
@@ -1124,14 +1124,14 @@ form .form-textarea {
   display: block;
 }
 
-form select {
+/* form select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position-x: 98%;
   background-position-y: 50%;
-}
+} */
 
 form label,
 form .form-label {

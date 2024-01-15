@@ -34,6 +34,10 @@ header {
   color: var(--light);
 }
 
+h1 {
+  padding: 0 15px;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -137,12 +141,6 @@ img {
   margin-bottom: 25px;
 }
 
-.painting-details {
-  text-align: center;
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
 /* CARDS */
 .card {
   margin: 20px;
@@ -180,6 +178,11 @@ img {
 
 .font-normal {
   font-weight: normal;
+}
+
+.font-bold {
+  font-weight: bolder;
+  font-size: 18px;
 }
 
 .margin-text {

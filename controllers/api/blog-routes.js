@@ -7,7 +7,6 @@ router.get('/comment/:id', async (req, res) => {
       const dbBlogData = await Blogpost.findByPk(req.params.id);
   
       const blogPost = dbBlogData.get({plain: true});
-      console.log('req.session.user', req.session.user);
       // Send over the 'loggedIn' session variable to the 'blogpost' template
       res.render('blog-post-comment', {
         blogPost,

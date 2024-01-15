@@ -3,9 +3,16 @@
 </section>
 
 {{#if loggedIn}}
-    <a class="color-link margin-text-extra-wide" href="/api/dashboard/newblogpost">Enter new blog post</a>
+    <section class="height-fixed">
+        <a class="color-link margin-text-extra-wide" href="/api/dashboard/newblogpost">Click here to enter new blog post</a>
+    </section>
+    <section>
+        <p class="margin-text-extra-wide font-size-normal">Click on blog post to update or delete it</p>
+    </section>
 {{else}}
-    <p class="margin-text-extra-wide font-size-normal">Your Blog Posts</p>
+    <section class="height-fixed">
+        <p class="margin-text-extra-wide font-size-normal">Your Blog Posts</p>
+    </section>
 {{/if}}
 
 {{#each blogPosts as |blogPost|}}
